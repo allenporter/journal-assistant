@@ -1,11 +1,45 @@
 2024:
+  January:
+    - event: Working at the bookstore
+    - note: Drawing a lot in the margins
+  February:
+    - event: Applied to Art School
+    - event: Portfolio review
   March:
     - event: Accepted into Art School program
+    - event: Quit the bookstore
+  April:
+    - event: Found a roommate, Sam
+    - event: Looking for an apartment in Portland
+  May:
+    - event: Packing
+    - event: Saying goodbye to friends in CA
+  June:
+    - event: Moved to Portland
+    - note: Apartment is small but has good light
   July:
     - event: Moved into new apartment with Sam
+    - event: Explored the city
+    - event: Found "The Grind" coffee shop
+  August:
+    - event: School started
+    - note: Prof. Chen is intimidating
+    - event: Met Jen in drawing class
+  September:
+    - event: First critique was brutal
+    - note: Need to work harder
+  October:
+    - event: Inktober challenge (15 days)
+    - event: Sam's band played their first show
   November:
     - event: First paid commission from Blue Gallery
     - financial: Car broke down ($500 repair)
+    - note: Eating ramen for the rest of the month
+  December:
+    - event: Finals week
+    - event: Went home for Christmas
+    - note: Dad didn't call
+    - event: Back in Portland for NYE
 
 2025:
   January:

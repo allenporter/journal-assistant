@@ -2,11 +2,35 @@
   January:
     - event: Started new role as Senior PM
     - goal: Set goal to run 5k
+  February:
+    - note: Work is busy, learning new systems
+    - health: Lily had the flu
+  March:
+    - event: Ran first 5k (32 mins)
+    - event: Mark got a promotion
+  April:
+    - event: Spring break staycation
+    - event: Planted the garden
+  May:
+    - note: Busy season at work, late nights
+    - health: Feeling tired all the time
   June:
     - event: Family vacation to Hawaii
-  October:
+    - note: Snorkeled with turtles
+  July:
+    - event: Lily learned to ride a bike
+  August:
+    - event: Camping trip (disaster due to rain)
+  September:
     - event: Lily started 1st grade
+    - event: Work project "Falcon" launched
+  October:
     - health: Diagnosed with migraines
+    - note: Tracking triggers (Stress? Caffeine?)
+    - event: Halloween (Lily was a witch)
+  November:
+    - event: Thanksgiving at Mark's parents
+    - health: Migraine during dinner
   December:
     - event: Performance review (Exceeds Expectations)
 

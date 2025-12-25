@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 class MockModel(BaseLlm):
     """A mock model for testing purposes."""
-    
+
     def generate_content(self, request: LlmRequest, **kwargs) -> LlmResponse:
         # Extract prompt from request
         prompt = ""
@@ -44,15 +44,15 @@ class MockModel(BaseLlm):
                      prompt += str(msg.content)
                 else:
                      prompt += str(msg)
-        
+
         logger.info(f"MockModel received prompt: {prompt[:100]}...")
-        
+
         text_response = "I am a mock agent."
         if "Reflect" in prompt or "reflection" in prompt.lower():
             text_response = "Based on your journal entries, January was a busy month with a focus on work and art."
         elif "Plan" in prompt or "planning" in prompt.lower():
             text_response = "You have a few deadlines coming up. I suggest focusing on your portfolio."
-            
+
         return LlmResponse(text=text_response)
 
     async def generate_content_async(self, request: LlmRequest, **kwargs) -> LlmResponse:
@@ -68,7 +68,7 @@ def main():
     # Setup paths
     root_dir = Path(__file__).parent.parent
     test_data_dir = root_dir / "tests" / "testdata" / "alex"
-    
+
     if not test_data_dir.exists():
         logger.error(f"Test data directory not found: {test_data_dir}")
         return
@@ -90,13 +90,13 @@ def main():
     # Test Query
     query = "Reflect on my January 2024 entries."
     logger.info(f"Running query: {query}")
-    
+
     # Run the agent
     try:
         runner = InMemoryRunner(agent=router_agent, app_name="journal-assistant")
         # Create session first
         runner.session_service.create_session_sync(session_id="test_session", user_id="test_user", app_name="journal-assistant")
-        
+
         # run() returns a generator of events
         # Wrap query in Content object
         content = Content(role="user", parts=[Part(text=query)])

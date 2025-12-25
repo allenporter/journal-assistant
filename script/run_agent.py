@@ -1,18 +1,23 @@
 """Script to run the agent from config."""
 
+import asyncio
 import os
 import sys
 from pathlib import Path
 
+from google.adk.apps import App
 from google.adk.agents.config_agent_utils import from_config as agent_from_config
+from google.adk.runners import InMemoryRunner
+from google.genai.types import Content, Part
+
 from journal_assistant.journal import get_calendar
 from journal_assistant.context import journal_context
 
-
+APP_NAME = "journal_assistant"
 AGENT_CONFIG = Path("journal_assistant/agents/router_agent.yaml")
 
 
-def main() -> None:
+async def main() -> None:
     if not (journal_dir := os.environ.get("JOURNAL_DATA_DIR", "")):
         print("Error: JOURNAL_DATA_DIR environment variable not set.")
         sys.exit(1)
@@ -30,6 +35,19 @@ def main() -> None:
     agent = agent_from_config(str(config_path))
     print(f"Agent loaded: {agent.name}")
 
+    app = App(
+        name=APP_NAME,
+        root_agent=agent,
+        # Optionally include App-level features:
+        # plugins, context_cache_config, resumability_config
+    )
+    runner = InMemoryRunner(app=app)
+    user_id = "test_user"
+    session_id = "test_session"
+    await runner.session_service.create_session(
+        app_name=app.name, user_id=user_id, session_id=session_id
+    )
+
     # Simple interaction loop
     print("Enter a query (or 'exit' to quit):")
     with journal_context(calendar):
@@ -39,11 +57,19 @@ def main() -> None:
                 break
 
             try:
-                response = agent.run(query)
-                print(f"\nResponse: {response}\n")
+                async for event in runner.run_async(
+                    user_id=user_id,
+                    session_id=session_id,
+                    new_message=Content(parts=[Part(text=query)]),
+                ):
+                    if event.content and event.content.parts:
+                        for part in event.content.parts:
+                            if part.text:
+                                print(part.text, end="", flush=True)
+                print("\n")
             except Exception as e:
                 print(f"Error running agent: {e}")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

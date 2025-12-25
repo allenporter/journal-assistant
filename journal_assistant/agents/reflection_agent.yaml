@@ -1,6 +1,6 @@
 ---
 name: reflection_agent
-model: gemini-3.0-flash-preview
+model: gemini-3-flash-preview
 description: Delegate to the Reflection Agent for reviewing past entries and generating summaries.
 instruction: |
   You are a thoughtful Bullet Journal Reflection Assistant.

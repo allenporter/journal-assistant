@@ -1,4 +1,5 @@
 import datetime
+import os
 from pathlib import Path
 from typing import List
 
@@ -6,7 +7,15 @@ from ..processing.journal import journal_pages_from_markdown
 from ..processing.model import JournalPage
 
 class JournalTool:
-    def __init__(self, root_dir: Path):
+    def __init__(self, root_dir: Path | None = None):
+        if root_dir is None:
+            env_path = os.environ.get("JOURNAL_DATA_DIR")
+            if env_path:
+                root_dir = Path(env_path)
+        
+        if root_dir is None:
+            raise ValueError("root_dir must be provided or JOURNAL_DATA_DIR environment variable must be set.")
+
         self.root_dir = root_dir
         self._cache: dict[str, JournalPage] = {}
         self._loaded = False

@@ -8,17 +8,16 @@ from pathlib import Path
 import logging
 
 from google.adk.apps import App
-from google.adk.agents.config_agent_utils import from_config as agent_from_config
 from google.adk.runners import InMemoryRunner
 from google.genai.types import Content, Part
 
 from journal_assistant.journal import get_calendar
 from journal_assistant.context import journal_context
+from journal_assistant.agent import create_agent
 
 _LOGGER = logging.getLogger(__name__)
 
 APP_NAME = "journal_assistant"
-AGENT_CONFIG = Path("journal_assistant/agents/router_agent.yaml")
 
 
 async def main() -> None:
@@ -37,17 +36,12 @@ async def main() -> None:
         print("Error: JOURNAL_DATA_DIR environment variable not set.")
         sys.exit(1)
 
-    config_path = Path(os.environ.get("AGENT_CONFIG_PATH", str(AGENT_CONFIG))).resolve()
-    if not config_path.is_file():
-        print(f"Error: Config file {config_path} does not exist.")
-        sys.exit(1)
-
     print(f"Loading journal from {journal_dir}...")
     calendar = get_calendar(Path(journal_dir))
 
-    print(f"Loading agent from {config_path}...")
+    print("Loading agent...")
 
-    agent = agent_from_config(str(config_path))
+    agent = create_agent()
     print(f"Agent loaded: {agent.name}")
 
     app = App(

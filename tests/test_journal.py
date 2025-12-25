@@ -3,9 +3,24 @@
 import datetime
 from pathlib import Path
 
+import pytest
+
 from journal_assistant.journal import get_calendar
 
 TEST_DATA_DIR = Path("datasets/alex")
+
+
+@pytest.mark.parametrize(
+    "data_dir",
+    [
+        Path("datasets/alex"),
+        Path("datasets/sarah"),
+    ],
+)
+def test_get_calendar_sarah(data_dir: Path) -> None:
+    """Test parsing the Sarah dataset."""
+    calendar = get_calendar(data_dir)
+    assert len(calendar.journal) > 0
 
 
 def test_get_calendar_alex() -> None:

@@ -35,7 +35,7 @@ jobs:
           uv pip install -r requirements_dev.txt
       - name: Test with pytest
         run: |
-          pytest --cov=journal-assistant --cov-report=term-missing
+          pytest --cov=journal_assistant --cov-report=term-missing
       - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

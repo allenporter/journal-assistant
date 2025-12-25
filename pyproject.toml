@@ -24,3 +24,10 @@ Source = "https://github.com/allenporter/journal-assistant"
 
 [tool.setuptools.packages.find]
 include = ["journal_assistant*"]
+
+[tool.pytest.ini_options]
+addopts = "-m 'not eval'"
+markers = [
+    "eval: marks tests as evaluation tests (deselect with '-m \"not eval\"')",
+    "asyncio: mark test as asyncio",
+]

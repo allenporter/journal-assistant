@@ -4,9 +4,11 @@ import os
 import pytest
 from pathlib import Path
 from google.adk.evaluation.agent_evaluator import AgentEvaluator
-from google.adk.evaluation.config import EvalConfig
+from google.adk.evaluation.eval_config import EvalConfig
 from journal_assistant.journal import get_calendar
 from journal_assistant.context import journal_context
+
+pytestmark = pytest.mark.eval
 
 # Constants
 JOURNAL_DATA_DIR = Path("datasets/alex")

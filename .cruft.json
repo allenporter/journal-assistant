@@ -1,0 +1,17 @@
+{
+  "template": "https://github.com/allenporter/cookiecutter-python/",
+  "commit": "6350072158fd88a83c66a631c379ca7651f64694",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Allen Porter",
+      "email": "allen.porter@gmail.com",
+      "github_username": "allenporter",
+      "project_name": "journal-assistant",
+      "description": "An agent based bullet journal assistant.",
+      "version": "0.0.1",
+      "_template": "https://github.com/allenporter/cookiecutter-python/"
+    }
+  },
+  "directory": null
+}

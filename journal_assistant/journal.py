@@ -71,4 +71,3 @@ def get_calendar(directory: Path) -> Calendar:
             )
         )
     return Calendar(journal=entries)
-    return Calendar(journal=entries)

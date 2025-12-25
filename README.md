@@ -46,3 +46,9 @@ Your journal shows you've been building a life in your new city:
 You’ve navigated a huge year of change. How are you feeling as you look at these milestones?
 
 ```
+
+## Related Work
+
+- https://github.com/allenporter/home-assistant-journal-assistant - LLM based Journal processor for Home Assistant
+- https://github.com/allenporter/home-assistant-supernote-cloud - Home Assistant Media Source for the Supernote e-ink journal
+- https://github.com/allenporter/supernote-lite - Private cloud server for Supernote e-ink journal and library for processing notebook entries

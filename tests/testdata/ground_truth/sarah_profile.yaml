@@ -1,0 +1,30 @@
+name: Sarah Jenkins
+age: 34
+occupation: Senior Project Manager
+company: TechCorp
+location: Seattle, WA
+family:
+  spouse: Mark
+  children:
+    - name: Lily
+      age: 6
+traits:
+  - Organized
+  - Ambitious
+  - Health-conscious
+  - Prone to stress
+interests:
+  - Yoga
+  - Hiking
+  - Reading (Non-fiction)
+goals:
+  - Promotion to Director
+  - Run a half-marathon
+  - Read 20 books/year
+entities:
+  - name: Dr. Smith
+    type: Doctor
+  - name: Lisa
+    type: Boss
+  - name: TechCorp
+    type: Employer

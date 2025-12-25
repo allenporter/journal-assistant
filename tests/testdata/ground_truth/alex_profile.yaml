@@ -1,0 +1,32 @@
+name: Alex Rivera
+age: 24
+occupation: Freelance Illustrator / Art Student
+school: PNW College of Art
+location: Portland, OR
+family:
+  mother: Maria (lives in CA)
+  father: David (estranged)
+household:
+  roommates:
+    - Sam
+traits:
+  - Creative
+  - Spontaneous
+  - Night owl
+  - Anxious about money
+interests:
+  - Watercolor
+  - Indie comics
+  - Coffee
+  - Gaming
+goals:
+  - Finish portfolio
+  - Get a graphic novel published
+  - Pay off credit card debt
+entities:
+  - name: Prof. Chen
+    type: Teacher
+  - name: The Grind
+    type: Coffee Shop
+  - name: Blue Gallery
+    type: Client

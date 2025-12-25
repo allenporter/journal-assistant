@@ -5,7 +5,7 @@ from pathlib import Path
 import logging
 
 from ical.calendar import Calendar
-from ical.event import Event
+from ical.journal import Journal
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ def get_calendar(directory: Path) -> Calendar:
         directory: The root directory containing journal entries (e.g. datasets/alex).
 
     Returns:
-        A Calendar object containing all-day events for each journal entry.
+        A Calendar object containing journal entries for each journal entry.
     """
     calendar = Calendar()
 
@@ -34,13 +34,11 @@ def get_calendar(directory: Path) -> Calendar:
         # Read content
         content = file_path.read_text()
 
-        # Create an all-day event
-        event = Event(
+        # Create a journal entry
+        journal = Journal(
             summary=f"Journal Entry {date}",
             dtstart=date,
-            dtend=date + datetime.timedelta(days=1),
             description=content,
         )
-        calendar.events.append(event)
-
+        calendar.journal.append(journal)
     return calendar

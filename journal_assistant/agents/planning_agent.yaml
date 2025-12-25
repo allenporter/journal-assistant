@@ -1,3 +1,4 @@
+---
 name: planning_agent
 model: gemini-2.0-flash-exp
 description: Delegate to the Planning Agent for scheduling and future task management.
@@ -8,6 +9,7 @@ instruction: |
   Check for upcoming events using `get_events`.
   Suggest a schedule or a list of priorities based on this information.
 tools:
-  - name: journal_assistant.tools.registry.read_entry
-  - name: journal_assistant.tools.registry.search_entries
-  - name: journal_assistant.tools.registry.get_events
+  - name: journal_assistant.tools.journal_tool.read_entry
+  - name: journal_assistant.tools.journal_tool.search_entries
+  # TODO: Add calendar integration in the future
+  # - name: journal_assistant.tools.registry.get_events

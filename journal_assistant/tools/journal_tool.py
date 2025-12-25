@@ -1,22 +1,15 @@
 import datetime
-from typing import List
 
 from ical.calendar import Calendar
+from .. import context
+
 
 class JournalTool:
     def __init__(self, calendar: Calendar):
         self.calendar = calendar
 
     def read_entry(self, date: str) -> str:
-        """
-        Reads the journal entry for a specific date.
-
-        Args:
-            date (str): The date to read in YYYY-MM-DD format.
-
-        Returns:
-            str: The content of the journal entry, or a message if not found.
-        """
+        """Reads the journal entry for a specific date."""
         try:
             target_date = datetime.date.fromisoformat(date)
         except ValueError:
@@ -29,15 +22,7 @@ class JournalTool:
         return f"No entry found for {date}."
 
     def search_entries(self, query: str) -> str:
-        """
-        Searches journal entries for a query string.
-
-        Args:
-            query (str): The text to search for.
-
-        Returns:
-            str: A list of matching entries with their dates.
-        """
+        """Searches journal entries for a query string."""
         results = []
         query = query.lower()
 
@@ -59,3 +44,33 @@ class JournalTool:
             return "No matches found."
 
         return "\n".join(results)
+
+
+def read_entry(date: str) -> str:
+    """Reads the journal entry for a specific date.
+
+    Args:
+        date (str): The date to read in YYYY-MM-DD format.
+
+    Returns:
+        str: The content of the journal entry, or a message if not found.
+    """
+    if (journal := context.get_current_journal()) is None:
+        return "No journal context is set."
+    tool = JournalTool(journal)
+    return tool.read_entry(date)
+
+
+def search_entries(query: str) -> str:
+    """Searches journal entries for a query string.
+
+    Args:
+        query (str): The text to search for.
+
+    Returns:
+        str: A list of matching entries with their dates.
+    """
+    if (journal := context.get_current_journal()) is None:
+        return "No journal context is set."
+    tool = JournalTool(journal)
+    return tool.search_entries(query)

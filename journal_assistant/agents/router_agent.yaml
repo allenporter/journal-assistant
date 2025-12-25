@@ -1,6 +1,6 @@
 ---
 name: router_agent
-model: gemini-2.0-flash-exp
+model: gemini-3.0-flash
 description: The main interface for the Bullet Journal Assistant.
 instruction: |
   You are the main interface for the Bullet Journal Assistant.

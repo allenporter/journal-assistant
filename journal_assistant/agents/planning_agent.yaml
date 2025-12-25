@@ -1,6 +1,6 @@
 ---
 name: planning_agent
-model: gemini-2.0-flash-exp
+model: gemini-3.0-flash-preview
 description: Delegate to the Planning Agent for scheduling and future task management.
 instruction: |
   You are a proactive Bullet Journal Planning Assistant.

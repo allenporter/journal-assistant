@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 
-def _parse_date_from_filename(filename: str) -> datetime.date | None:
+def _parse_date_from_filename(filename: Path) -> datetime.date | None:
     """Parse a date from a filename in YYYY-MM-DD.md or YYYY-MM.md format."""
     if len(filename.stem) == 10:
         try:

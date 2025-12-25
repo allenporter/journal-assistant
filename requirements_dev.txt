@@ -7,3 +7,8 @@ pre-commit==4.0.1
 pytest-cov==6.0.0
 pytest==8.4.1
 ruff==0.8.1
+
+google-adk==1.21.0
+mashumaro==3.17
+PyYAML==6.0.3
+ical==12.1.2

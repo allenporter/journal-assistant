@@ -13,10 +13,10 @@ authors = [{ name = "Allen Porter", email = "allen.porter@gmail.com" }]
 requires-python = ">=3.12"
 classifiers = []
 dependencies = [
-    "google-adk",
-    "mashumaro",
-    "PyYAML",
-    "ical",
+    "google-adk>=1.21.0",
+    "mashumaro>=3.17",
+    "PyYAML>=6.0.3",
+    "ical>=12.1.2",
 ]
 
 [project.urls]

@@ -12,7 +12,12 @@ readme = "README.md"
 authors = [{ name = "Allen Porter", email = "allen.porter@gmail.com" }]
 requires-python = ">=3.12"
 classifiers = []
-dependencies = []
+dependencies = [
+    "google-adk",
+    "mashumaro",
+    "PyYAML",
+    "ical",
+]
 
 [project.urls]
 Source = "https://github.com/allenporter/journal-assistant"

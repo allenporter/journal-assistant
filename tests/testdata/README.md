@@ -39,6 +39,15 @@ tests/testdata/
 *   **Themes**: Creative struggles, financial stress, moving cities (CA to Portland), social life.
 *   **Journal Style**: Expressive, mood-focused, less rigid structure.
 
+## Journal Format
+
+The journals use a rapid logging format:
+*   `• Task`: An open task.
+*   `x Task`: A completed task.
+*   `> Task`: A task migrated to a future date.
+*   `o Event`: An event or appointment.
+*   `- Note`: A note, observation, or thought.
+
 ## Usage
 
 This dataset is intended to be used for:

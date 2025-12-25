@@ -1,4 +1,4 @@
-# Evaluation Test Data
+# Evaluation Datasets
 
 This directory contains synthetic journal data designed for evaluating the Journal Assistant agent. The data simulates the personal journals of two distinct personas over a multi-year period, providing a rich context for testing the agent's ability to understand narrative, track tasks, and infer correlations.
 
@@ -7,7 +7,7 @@ This directory contains synthetic journal data designed for evaluating the Journ
 The data is organized by persona and year:
 
 ```
-tests/testdata/
+datasets/
 ├── ground_truth/       # Source-of-truth files for evaluation
 │   ├── alex_profile.yaml
 │   ├── alex_timeline.yaml

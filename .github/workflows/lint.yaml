@@ -21,7 +21,7 @@ jobs:
       - uses: codespell-project/actions-codespell@v2.2
         with:
           check_hidden: false
-          skip: ./tests/testdata/*,*.ipynb
+          skip: ./tests/testdata/*,./datasets/*,*.ipynb
 
       - name: Run yamllint
         uses: ibiqlik/action-yamllint@v3

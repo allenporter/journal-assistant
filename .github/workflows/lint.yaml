@@ -21,6 +21,8 @@ jobs:
       - uses: codespell-project/actions-codespell@v2.1
         with:
           check_hidden: false
+          exclude_file: tests/testdata/
+
       - name: Run yamllint
         uses: ibiqlik/action-yamllint@v3
         with:

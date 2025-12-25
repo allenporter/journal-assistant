@@ -1,9 +1,11 @@
 """Script to run the agent from config."""
 
+import argparse
 import asyncio
 import os
 import sys
 from pathlib import Path
+import logging
 
 from google.adk.apps import App
 from google.adk.agents.config_agent_utils import from_config as agent_from_config
@@ -13,11 +15,24 @@ from google.genai.types import Content, Part
 from journal_assistant.journal import get_calendar
 from journal_assistant.context import journal_context
 
+_LOGGER = logging.getLogger(__name__)
+
 APP_NAME = "journal_assistant"
 AGENT_CONFIG = Path("journal_assistant/agents/router_agent.yaml")
 
 
 async def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the journal assistant agent.")
+    parser.add_argument(
+        "--log-level",
+        default=None,
+        help="Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
+    )
+    args = parser.parse_args()
+
+    if args.log_level:
+        logging.basicConfig(level=getattr(logging, args.log_level.upper()))
+
     if not (journal_dir := os.environ.get("JOURNAL_DATA_DIR", "")):
         print("Error: JOURNAL_DATA_DIR environment variable not set.")
         sys.exit(1)
@@ -66,6 +81,8 @@ async def main() -> None:
                         for part in event.content.parts:
                             if part.text:
                                 print(part.text, end="", flush=True)
+                            else:
+                                _LOGGER.debug("Received part: %s", part)
                 print("\n")
             except Exception as e:
                 print(f"Error running agent: {e}")

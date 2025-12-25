@@ -31,6 +31,10 @@ def parse_line(line: str) -> RapidLogEntry | None:
         entry.type = "task"
         entry.status = "open"
         entry.content = line[2:]
+    elif line.startswith("x "):
+        entry.type = "task"
+        entry.status = "completed"
+        entry.content = line[2:]
     elif line.startswith("X "):
         entry.type = "task"
         entry.status = "completed"

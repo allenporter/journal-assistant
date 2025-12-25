@@ -1,4 +1,3 @@
-import datetime
 
 class CalendarTool:
     def get_events(self, start_date: str, end_date: str) -> str:

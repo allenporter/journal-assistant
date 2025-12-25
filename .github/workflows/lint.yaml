@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: codespell-project/actions-codespell@v2.1
+      - uses: codespell-project/actions-codespell@v2.2
         with:
           check_hidden: false
-          skip: ./tests/testdata/*
+          skip: ./tests/testdata/*,*.ipynb
 
       - name: Run yamllint
         uses: ibiqlik/action-yamllint@v3

@@ -70,4 +70,6 @@ def get_calendar(directory: Path) -> Calendar:
                 description=content,
             )
         )
-    return Calendar(journal=entries)
+    calendar = Calendar()
+    calendar.journal = entries
+    return calendar

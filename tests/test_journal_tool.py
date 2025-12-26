@@ -11,7 +11,8 @@ def test_read_entry() -> None:
         dtstart=datetime.date(2024, 1, 1),
         description="This is a test entry.\n- [ ] Task 1",
     )
-    calendar = Calendar(journal=[entry])
+    calendar = Calendar()
+    calendar.journal = [entry]
     tool = JournalTool(calendar)
 
     result = tool.read_entry("2024-01-01")
@@ -21,14 +22,14 @@ def test_read_entry() -> None:
 
 
 def test_read_entry_not_found() -> None:
-    calendar = Calendar(journal=[])
+    calendar = Calendar()
     tool = JournalTool(calendar)
     result = tool.read_entry("2024-01-01")
     assert "No entry found for 2024-01-01" in result
 
 
 def test_read_entry_invalid_date() -> None:
-    calendar = Calendar(journal=[])
+    calendar = Calendar()
     tool = JournalTool(calendar)
     result = tool.read_entry("invalid-date")
     assert "Invalid date format" in result
@@ -43,7 +44,8 @@ def test_search_entries() -> None:
     entry2 = Journal(
         summary="Entry 2", dtstart=datetime.date(2024, 1, 2), description="Buy milk"
     )
-    calendar = Calendar(journal=[entry1, entry2])
+    calendar = Calendar()
+    calendar.journal = [entry1, entry2]
     tool = JournalTool(calendar)
 
     result = tool.search_entries("Bob")
@@ -53,7 +55,7 @@ def test_search_entries() -> None:
 
 
 def test_search_entries_no_match() -> None:
-    calendar = Calendar(journal=[])
+    calendar = Calendar()
     tool = JournalTool(calendar)
     result = tool.search_entries("xyz")
     assert "No matches found" in result
@@ -66,7 +68,8 @@ def test_context_based_tool_calls() -> None:
         dtstart=datetime.date(2024, 1, 1),
         description="Context test",
     )
-    calendar = Calendar(journal=[entry])
+    calendar = Calendar()
+    calendar.journal = [entry]
 
     # Test without context
     assert read_entry("2024-01-01") == "No journal context is set."

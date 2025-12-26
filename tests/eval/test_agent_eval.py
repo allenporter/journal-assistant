@@ -4,7 +4,6 @@ import os
 import pytest
 from pathlib import Path
 from google.adk.evaluation.agent_evaluator import AgentEvaluator
-from google.adk.evaluation.eval_config import EvalConfig
 from journal_assistant.journal import get_calendar
 from journal_assistant.context import journal_context
 
@@ -40,11 +39,11 @@ async def test_retrieval_eval():
         await AgentEvaluator.evaluate(
             agent_module="journal_assistant.agent",
             eval_dataset_file_path_or_dir=str(RETRIEVAL_EVAL_FILE),
-            eval_config=EvalConfig(
-                criteria={
-                    "response_match_score": 0.8,
-                }
-            ),
+            # eval_config=EvalConfig(
+            #     criteria={
+            #         "response_match_score": 0.8,
+            #     }
+            # ),
         )
 
 
@@ -65,9 +64,9 @@ async def test_reflection_eval():
         await AgentEvaluator.evaluate(
             agent_module="journal_assistant.agent",
             eval_dataset_file_path_or_dir=str(REFLECTION_EVAL_FILE),
-            eval_config=EvalConfig(
-                criteria={
-                    "response_match_score": 0.8,
-                }
-            ),
+            # eval_config=EvalConfig(
+            #     criteria={
+            #         "response_match_score": 0.8,
+            #     }
+            # ),
         )

@@ -34,19 +34,23 @@ def test_get_calendar_alex() -> None:
     target_date = datetime.date(2024, 1, 1)
     found_entry = None
     for entry in calendar.journal:
-        if entry.dtstart == target_date and "### Jan 1 (Mon)" in entry.description:
+        if entry.dtstart == target_date and "### Jan 1 (Mon)" in (
+            entry.description or ""
+        ):
             found_entry = entry
             break
 
     assert found_entry is not None
     assert found_entry.summary == "Jan 1 (Mon)"
     assert found_entry.dtstart == target_date
-    assert "o Work 10-6" in found_entry.description
+    assert "o Work 10-6" in (found_entry.description or "")
 
     # Check monthly summary
     monthly_entry = None
     for entry in calendar.journal:
-        if entry.dtstart == target_date and "# January 2024" in entry.description:
+        if entry.dtstart == target_date and "# January 2024" in (
+            entry.description or ""
+        ):
             monthly_entry = entry
             break
 

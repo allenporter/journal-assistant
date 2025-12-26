@@ -9,7 +9,8 @@ def test_context_manager() -> None:
     assert get_current_journal() is None
 
     j = Journal(summary="Test", dtstart=datetime.date(2025, 1, 1), description="Desc")
-    c = Calendar(journal=[j])
+    c = Calendar()
+    c.journal = [j]
 
     with journal_context(c):
         assert get_current_journal() == c
@@ -22,12 +23,14 @@ def test_nested_context() -> None:
     j1 = Journal(
         summary="Test 1", dtstart=datetime.date(2025, 1, 1), description="Desc 1"
     )
-    c1 = Calendar(journal=[j1])
+    c1 = Calendar()
+    c1.journal = [j1]
 
     j2 = Journal(
         summary="Test 2", dtstart=datetime.date(2025, 1, 2), description="Desc 2"
     )
-    c2 = Calendar(journal=[j2])
+    c2 = Calendar()
+    c2.journal = [j2]
 
     assert get_current_journal() is None
 

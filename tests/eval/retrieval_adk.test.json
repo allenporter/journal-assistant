@@ -1,0 +1,50 @@
+{
+  "eval_set_id": "retrieval_eval_set",
+  "eval_cases": [
+    {
+      "eval_id": "retrieval_01",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "When did I officially move to Portland?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "You officially moved to Portland on May 31, 2024." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "retrieval_02",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "Who is the 'intimidating' professor mentioned in August 2024?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "Professor Chen is the intimidating professor mentioned in August 2024." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "retrieval_03",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "What specific car repair was needed in November 2024 and how much did it cost?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "Your car needed a new starter and battery in November 2024, and the estimate was $500." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "retrieval_04",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "What is the name of the coffee shop I found in July?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "The coffee shop is called 'The Grind'." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "aggregation_01",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "How many days did I participate in the 'Inktober' challenge in October 2024?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "You participated in the 'Inktober' challenge for all 31 days of October 2024." }], "role": "model" }
+        }
+      ]
+    }
+  ]
+}

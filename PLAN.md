@@ -64,6 +64,24 @@ This plan outlines the design and implementation of a modular agent system using
 3.  Compare agent outputs against `tests/testdata/ground_truth` (e.g., `alex_profile.yaml`, `alex_timeline.yaml`).
 4.  Implement metrics: Semantic similarity of reflections, accuracy of extracted tasks.
 
+## Phase 2: Improvements & Advanced Evaluation
+
+### 1. Advanced Evaluation Scenarios
+- **Future Event Evaluation**:
+  - Create a dataset for "Planning" queries (e.g., "What do I have next week?", "When is my next deadline?").
+  - Mock the `CalendarTool` to return specific event sets for these tests.
+  - Verify that the `PlanningAgent` correctly interprets dates and summarizes events.
+- **Complex Retrieval**:
+  - Test queries that require aggregating information across multiple months (e.g., "How has my mood changed since January?").
+
+### 2. Data Layer Refinements
+- **Fix Entry Collisions**: Update `JournalTool.read_entry` to handle cases where multiple files map to the same date (e.g., a daily entry `2024-06-01.md` and a monthly log `2024-06.md` which might default to the 1st). Ensure all relevant content is returned.
+- **Robust Markdown Parsing**: Improve the reader to handle various header formats and nested sections more reliably.
+
+### 3. Enhanced Tooling
+- **Real Calendar Integration**: Move beyond mocks to support parsing `.ics` files or connecting to a CalDAV server for the `CalendarTool`.
+- **Image Generation**: Implement the `ImageGenTool` to allow the agent to create visual representations of journal entries or mood boards.
+
 ## Future Considerations
 - **Home Assistant Integration**: Expose the ADK agents as a service in HA.
 - **State Management**: Decide if agents need conversation history (Memory) or just context from files.

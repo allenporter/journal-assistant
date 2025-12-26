@@ -1,80 +1,42 @@
 import datetime
-from pathlib import Path
-from typing import List
 
-from ..processing.journal import journal_pages_from_markdown
-from ..processing.model import JournalPage
+from ical.calendar import Calendar
+from .. import context
+
 
 class JournalTool:
-    def __init__(self, root_dir: Path):
-        self.root_dir = root_dir
-        self._cache: dict[str, JournalPage] = {}
-        self._loaded = False
-
-    def _load_all(self):
-        if self._loaded:
-            return
-
-        # Walk through all markdown files
-        for file_path in self.root_dir.rglob("*.md"):
-            pages = journal_pages_from_markdown(file_path)
-            for page in pages:
-                if page.date:
-                    self._cache[page.date] = page
-        self._loaded = True
+    def __init__(self, calendar: Calendar):
+        self.calendar = calendar
 
     def read_entry(self, date: str) -> str:
-        """
-        Reads the journal entry for a specific date.
+        """Reads the journal entry for a specific date."""
+        try:
+            target_date = datetime.date.fromisoformat(date)
+        except ValueError:
+            return f"Invalid date format: {date}. Please use YYYY-MM-DD."
 
-        Args:
-            date (str): The date to read in YYYY-MM-DD format.
+        for entry in self.calendar.journal:
+            if entry.dtstart == target_date:
+                return f"Entry for {date}:\n{entry.description}"
 
-        Returns:
-            str: The content of the journal entry, or a message if not found.
-        """
-        self._load_all()
-        page = self._cache.get(date)
-        if not page:
-            return f"No entry found for {date}."
-
-        # Format the output
-        lines = [f"Entry for {date}:"]
-        if page.records:
-            for record in page.records:
-                prefix = "- "
-                if record.type == "task":
-                    prefix = "[ ] " if record.status == "open" else "[x] "
-                elif record.type == "event":
-                    prefix = "o "
-
-                lines.append(f"{prefix}{record.content}")
-
-        return "\n".join(lines)
+        return f"No entry found for {date}."
 
     def search_entries(self, query: str) -> str:
-        """
-        Searches journal entries for a query string.
-
-        Args:
-            query (str): The text to search for.
-
-        Returns:
-            str: A list of matching entries with their dates.
-        """
-        self._load_all()
+        """Searches journal entries for a query string."""
         results = []
         query = query.lower()
 
-        for date, page in self._cache.items():
+        for entry in self.calendar.journal:
+            if not entry.description:
+                continue
+
             matches = []
-            if page.records:
-                for record in page.records:
-                    if query in record.content.lower():
-                        matches.append(record.content)
+            for line in entry.description.splitlines():
+                if query in line.lower():
+                    matches.append(line.strip())
 
             if matches:
-                results.append(f"Date: {date}")
+                results.append(f"Date: {entry.dtstart}")
                 for match in matches:
                     results.append(f"  - {match}")
 
@@ -82,3 +44,33 @@ class JournalTool:
             return "No matches found."
 
         return "\n".join(results)
+
+
+def read_entry(date: str) -> str:
+    """Reads the journal entry for a specific date.
+
+    Args:
+        date (str): The date to read in YYYY-MM-DD format.
+
+    Returns:
+        str: The content of the journal entry, or a message if not found.
+    """
+    if (journal := context.get_current_journal()) is None:
+        return "No journal context is set."
+    tool = JournalTool(journal)
+    return tool.read_entry(date)
+
+
+def search_entries(query: str) -> str:
+    """Searches journal entries for a query string.
+
+    Args:
+        query (str): The text to search for.
+
+    Returns:
+        str: A list of matching entries with their dates.
+    """
+    if (journal := context.get_current_journal()) is None:
+        return "No journal context is set."
+    tool = JournalTool(journal)
+    return tool.search_entries(query)

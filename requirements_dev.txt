@@ -5,7 +5,7 @@ pip==25.3
 pre-commit==4.5.1
 pytest-cov==6.3.0
 pytest==9.0.2
-ruff==0.8.1
+ruff==0.14.10
 ty==0.0.7
 
 google-adk[eval]==1.21.0

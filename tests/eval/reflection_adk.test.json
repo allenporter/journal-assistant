@@ -1,0 +1,32 @@
+{
+  "eval_set_id": "reflection_eval_set",
+  "eval_cases": [
+    {
+      "eval_id": "reflection_june_2024",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "Summarize my journal entries for June 2024." }], "role": "user" },
+          "final_response": { "parts": [{ "text": "In June 2024, you moved to Portland. You noted that your new apartment is small but has good light. You also found a coffee shop called 'The Grind' which you loved." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "reflection_nov_2024",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "What were the main events and challenges in November 2024?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "In November 2024, you received your first paid commission from the Blue Gallery. However, you also faced a financial challenge when your car broke down, costing $500 to repair. You mentioned eating ramen for the rest of the month to save money." }], "role": "model" }
+        }
+      ]
+    },
+    {
+      "eval_id": "reflection_school_start",
+      "conversation": [
+        {
+          "user_content": { "parts": [{ "text": "How did I feel about starting school in August 2024?" }], "role": "user" },
+          "final_response": { "parts": [{ "text": "School started in August 2024. You met Jen in your drawing class, but you found Professor Chen to be intimidating." }], "role": "model" }
+        }
+      ]
+    }
+  ]
+}

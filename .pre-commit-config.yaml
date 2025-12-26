@@ -27,8 +27,9 @@ repos:
     hooks:
       - id: ty
         name: ty check
-        entry: uvx ty check . --ignore unresolved-import
+        entry: ty check . --ignore unresolved-import
         language: python
+        pass_filenames: false
         types_or:
           - python
           - pyi

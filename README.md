@@ -5,9 +5,8 @@ An agent based Journal Assistant, going deeper into https://github.com/allenport
 ## Local development
 
 ```shell
-uv venv --python=3.14
-source .venv/bin/activate
-uv pip install -r ./requirements_dev.txt
+script/bootstrap
+script/setup
 ```
 
 ## Run local agent

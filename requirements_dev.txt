@@ -8,7 +8,7 @@ pytest==9.1.1
 ruff==0.15.20
 ty==0.0.56
 
-google-adk[eval]==2.3.0
+google-adk[eval]==2.4.0
 mashumaro==3.22
 PyYAML==6.0.3
 ical==13.3.0

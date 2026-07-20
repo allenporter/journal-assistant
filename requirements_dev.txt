@@ -11,5 +11,5 @@ ty==0.0.61
 google-adk[eval]==2.5.0
 mashumaro==3.22
 PyYAML==6.0.3
-ical==13.3.0
+ical==14.0.1
 pytest-asyncio==1.4.0

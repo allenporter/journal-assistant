@@ -1,7 +1,9 @@
+import datetime
+
 from ical.calendar import Calendar
 from ical.journal import Journal
-import datetime
-from journal_assistant.context import journal_context, get_current_journal
+
+from journal_assistant.context import get_current_journal, journal_context
 
 
 def test_context_manager() -> None:

@@ -1,8 +1,10 @@
 import datetime
+
 from ical.calendar import Calendar
 from ical.journal import Journal
-from journal_assistant.tools.journal_tool import JournalTool, read_entry, search_entries
+
 from journal_assistant.context import journal_context
+from journal_assistant.tools.journal_tool import JournalTool, read_entry, search_entries
 
 
 def test_read_entry() -> None:

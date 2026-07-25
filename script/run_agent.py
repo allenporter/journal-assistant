@@ -2,18 +2,18 @@
 
 import argparse
 import asyncio
+import logging
 import os
 import sys
 from pathlib import Path
-import logging
 
 from google.adk.apps import App
 from google.adk.runners import InMemoryRunner
 from google.genai.types import Content, Part
 
-from journal_assistant.journal import get_calendar
-from journal_assistant.context import journal_context
 from journal_assistant.agent import create_agent
+from journal_assistant.context import journal_context
+from journal_assistant.journal import get_calendar
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -78,7 +78,7 @@ async def main() -> None:
                             else:
                                 _LOGGER.debug("Received part: %s", part)
                 print("\n")
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 print(f"Error running agent: {e}")
 
 

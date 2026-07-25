@@ -1,8 +1,8 @@
 """Module for parsing journal entries into an iCal Calendar."""
 
 import datetime
-from pathlib import Path
 import logging
+from pathlib import Path
 
 from ical.calendar import Calendar
 from ical.journal import Journal

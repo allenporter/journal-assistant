@@ -1,6 +1,7 @@
-from contextvars import ContextVar
+from collections.abc import Generator
 from contextlib import contextmanager
-from typing import Generator
+from contextvars import ContextVar
+
 from ical.calendar import Calendar
 
 _CURRENT_JOURNAL: ContextVar[Calendar | None] = ContextVar(
@@ -9,7 +10,7 @@ _CURRENT_JOURNAL: ContextVar[Calendar | None] = ContextVar(
 
 
 @contextmanager
-def journal_context(journal: Calendar) -> Generator[None, None, None]:
+def journal_context(journal: Calendar) -> Generator[None]:
     """Context manager to set the current journal."""
     token = _CURRENT_JOURNAL.set(journal)
     try:

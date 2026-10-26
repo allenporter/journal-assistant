@@ -6,7 +6,7 @@ pre-commit==4.7.0
 pytest-cov==7.1.0
 pytest==9.1.1
 ruff==0.17.2
-ty==0.0.91
+ty==0.0.92
 
 google-adk[eval]==2.13.0
 mashumaro==3.23

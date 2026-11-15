@@ -31,3 +31,7 @@ markers = [
     "eval: marks tests as evaluation tests (deselect with '-m \"not eval\"')",
     "asyncio: mark test as asyncio",
 ]
+
+[tool.coverage.run]
+core = "sysmon"
+disable_warnings = ["no-sysmon"]
